@@ -10,6 +10,11 @@ const createMainWindow = () => {
     title: "Image Resizer",
     width: isDev ? 1000 : 500,
     height: 600,
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: true,
+      preload: path.join(__dirname, "preload.js"),
+    },
   });
 
   // OPEN DEV TOOLS IF APP IS IN DEV
