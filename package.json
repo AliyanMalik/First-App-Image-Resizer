@@ -1,0 +1,18 @@
+{
+  "name": "imageresizer",
+  "productName": "First App",
+  "version": "1.0.0",
+  "description": "THIS IS THE FPRACTICE APPLICATION BUILT ON ELECTRON JS",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Aliyan Malik",
+  "license": "ISC",
+  "dependencies": {
+    "core-js": "^3.26.1",
+    "electron": "^21.3.0",
+    "resize-img": "^2.0.0",
+    "toastify-js": "^1.12.0"
+  }
+}
