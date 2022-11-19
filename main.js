@@ -1,14 +1,16 @@
-const { app, BrowserWindow, Menu, ipcMain } = require("electron");
+const { app, BrowserWindow, Menu, ipcMain, shell } = require("electron");
 const path = require("path");
 const os = require("os");
 const fs = require("fs");
+const resizeImg = require("resize-img");
 
 const isDev = process.env.NODE_ENV !== "production";
 const isMac = process.platform === "darwin";
 
+let mainWindow;
 // CREATE MAIN WINDOW HANDLER
 const createMainWindow = () => {
-  const mainWindow = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     title: "Image Resizer",
     width: isDev ? 1000 : 500,
     height: 600,
@@ -44,6 +46,9 @@ app.whenReady().then(() => {
   // IMPLEMENT MENU
   const mainMenu = Menu.buildFromTemplate(menu);
   Menu.setApplicationMenu(mainMenu);
+
+  // Remove variable from memory
+  mainWindow.on("closed", () => (mainWindow = null));
 
   app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) {
